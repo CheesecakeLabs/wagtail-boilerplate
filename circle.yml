@@ -1,0 +1,22 @@
+machine:
+  python:
+    version: 3.6.2
+  node:
+    version: 8.9.4
+
+dependencies:
+    pre:
+      - pip install setuptools --upgrade
+      - npm install yarn
+      - cd src/static && yarn install --production=false && cd ../..
+
+deployment:
+  prod:
+    tag: /v[0-9]+(\.[0-9]+)*/
+    commands:
+      - cd src/static && yarn build && cd ../...
+      - mkdir ~/.aws
+      - echo -e "[ckl-mao-na-massa]\naws_access_key_id=$AWS_ACCESS_KEY_ID\naws_secret_access_key=$AWS_SECRET_ACCESS_KEY\n" > ~/.aws/credentials
+      - zappa update prod
+      - zappa manage prod "migrate --noinput"
+      - zappa manage prod "collectstatic --noinput"

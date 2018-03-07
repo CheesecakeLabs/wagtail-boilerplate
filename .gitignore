@@ -1,0 +1,36 @@
+# Byte-compiled Python
+__pycache__/
+*.pyc
+
+# dotenv
+.env
+
+# virtualenv
+venv/
+
+# Database data
+docker/db/pgdata/
+*.db
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment vars
+local.env
+
+# Dependency directories
+node_modules/
+
+# Webpack
+webpack-stats.json
+
+# os temp fiels
+.DS_Store
+
+# Build files
+.dist/
+
+# Local uploads
+.media/

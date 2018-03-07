@@ -1,0 +1,28 @@
+{% load render_bundle from webpack_loader %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+
+    {% render_bundle 'main' 'css' %}
+    {% block extrastyle %}{% endblock %}
+  </head>
+
+  <body class="{% block bodyclass %}{% endblock %}">
+    {% block header %}
+      {% include 'header.html' %}
+    {% endblock %}
+
+    {% block content %}{% endblock %}
+
+    {% block footer %}
+      {% include 'footer.html' %}
+    {% endblock %}
+
+    {% render_bundle 'main' 'js' %}
+    {% block extrascript %}{% endblock %}
+  </body>
+</html>
