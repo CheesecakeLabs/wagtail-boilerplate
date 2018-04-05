@@ -51,6 +51,11 @@ module.exports = {
         }),
       },
       {
+        test: /\.(eot|svg|ttf|woff|woff2|otf)$/,
+        exclude: /node_modules/,
+        loader: 'file-loader?name=./fonts/[name].[ext]'
+      },
+      {
         test: /\.css$/,
         include: /node_modules/,
         loader: ExtractTextPlugin.extract({
