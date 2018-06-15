@@ -8,7 +8,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /usr/src/app
 
-COPY docker-entrypoint.sh /usr/src/app
-
-WORKDIR /usr/src/app/src
 ENTRYPOINT ["sh", "docker-entrypoint.sh"]

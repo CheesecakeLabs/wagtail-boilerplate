@@ -1,13 +1,18 @@
 version: '3'
 services:
+
   web:
     build: .
+    tty: true
     volumes:
       - .:/usr/src/app
     ports:
       - 8000:8000
     environment:
       DATABASE_URL: postgres://postgres:postgres@db:5432/app
+      ENVIRONMENT: development
+      DJANGO_DEBUG: 'True'
+      DJANGO_ALLOWED_HOSTS: localhost,127.0.0.1
 
   db:
     image: postgres
