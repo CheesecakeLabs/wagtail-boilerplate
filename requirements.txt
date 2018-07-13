@@ -15,5 +15,8 @@ wagtail==2.0rc1
 django-storages==1.6.5
 django-webpack-loader==0.5.0
 
+# WSGI HTTP Server
+gunicorn==19.8.1
+
 # Logs
 watchtower==0.5.2
