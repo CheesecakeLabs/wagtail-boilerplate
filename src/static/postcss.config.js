@@ -11,20 +11,18 @@ const postCSSCustomMedia = require('postcss-custom-media')
 const postCSSHexRgba = require('postcss-hexrgba')
 const postCSSColorFunc = require('postcss-color-function')
 const postCSSEasyImport = require('postcss-easy-import')
-const postCSSLost = require('lost')
 
 module.exports = {
-    plugins: [
-        postCSSEasyImport(),
-        postCSSAtRulesVariables(),
-        postCSSVariables(),
-        postCSSNested(),
-        postCSSMixins(),
-        postCSSEach(),
-        postCSSCustomMedia(),
-        postCSSAutoprefixer({ browsers: ['IE 9', 'iOS 7'] }),
-        postCSSHexRgba(),
-        postCSSColorFunc(),
-        postCSSLost(),
-    ],
+  plugins: [
+    postCSSEasyImport(),
+    postCSSAtRulesVariables(),
+    postCSSVariables(),
+    postCSSNested(),
+    postCSSMixins(),
+    postCSSEach(),
+    postCSSCustomMedia(),
+    postCSSAutoprefixer({ browsers: ['IE 9', 'iOS 7'] }),
+    postCSSHexRgba(),
+    postCSSColorFunc(),
+  ],
 }
