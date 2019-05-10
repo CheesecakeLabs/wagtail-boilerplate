@@ -1,84 +1,55 @@
-const webpack = require("webpack")
-const path = require("path")
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const path = require('path')
+
+const webpack = require('webpack')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const BundleTracker = require('webpack-bundle-tracker')
 
+const resolve = require('./webpack/resolve')
+/** @TODO: re-use configs from base webpack configuration */
+const webpackConfig = require('./webpack.config')
+
 module.exports = {
-  entry: {
-    main: "./javascript/app",
-  },
+  entry: path.resolve(__dirname, './javascript/app.js'),
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        screw_ie8: true,
-        warnings: false,
-      },
+    new BundleTracker({ filename: '../../bundles/webpack-stats.json' }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     }),
-    new ExtractTextPlugin("main.css"),
-    new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify("production"),
-    }),
-    new BundleTracker({filename: '../.dist/webpack-stats.json'}),
   ],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loader: "babel-loader",
         exclude: /node_modules/,
-        query: {
-          presets: ["es2015"],
+        use: {
+          loader: 'babel-loader',
         },
       },
       {
         test: /\.css$/,
         exclude: /node_modules/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: "css-loader",
-              options: {
-                minimize: true,
-                importLoaders: 1,
-                config: {
-                  path: "./postcss.config.js",
-                },
-              },
-            },
-            "postcss-loader",
-          ],
-        }),
+        use: [{ loader: MiniCssExtractPlugin.loader }, 'css-loader', 'postcss-loader'],
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|otf)$/,
-        exclude: /node_modules/,
-        loader: 'file-loader?name=./fonts/[name].[ext]'
+        exclude: [/node_modules/, /icons/],
+        use: 'file-loader?name=./fonts/[name].[ext]',
       },
       {
         test: /\.css$/,
         include: /node_modules/,
-        loader: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: [
-            {
-              loader: "css-loader",
-              options: {
-                modules: false,
-                minimize: true,
-              },
-            },
-          ],
-        }),
+        use: [{ loader: MiniCssExtractPlugin.loader }, 'css-loader'],
       },
       {
         test: /\.(jpe?g|png|svg)$/i,
-        loaders: ["file-loader?hash=sha512&digest=hex&name=[hash].[ext]", "image-webpack-loader?"],
+        use: ['file-loader?hash=sha512&digest=hex&name=img/[hash].[ext]', 'image-webpack-loader?'],
       },
     ],
   },
   output: {
-    path: path.resolve(__dirname, "../.dist/"),
-    filename: "main.js",
+    path: path.resolve(__dirname, '../../bundles'),
+    filename: '[name].[chunkhash].js',
   },
+  resolve,
 }

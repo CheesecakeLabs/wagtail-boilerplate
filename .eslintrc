@@ -8,10 +8,6 @@
   "ecmaFeatures": {
     "modules": true
   },
-  "extends": [
-    "prettier"
-  ],
-  "plugins": [
-    "prettier"
-  ]
+  "extends": ["prettier", "cheesecake"],
+  "plugins": ["prettier"]
 }

@@ -2,4 +2,3 @@
 import styles from '../styles/styles.css'
 
 // Include and initialize JS
-const test = 1

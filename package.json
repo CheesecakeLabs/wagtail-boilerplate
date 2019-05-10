@@ -1,0 +1,48 @@
+{
+  "name": "wagtail-boilerplate",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/static/javascript/app.js",
+  "scripts": {
+    "dev": "webpack-dev-server --mode development --port 3000 --hot --host 0.0.0.0 --config src/static/webpack.config.js",
+    "build": "webpack --colors --hide-modules --mode production --config src/static/webpack.config.production.js",
+    "server": "yarn build & http-server ../public/ -o"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "normalize.css": "8.0.1",
+    "reset.css": "^2.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "autoprefixer": "^7.1.2",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.1",
+    "eslint-config-cheesecakelabs": "^3.0.2",
+    "file-loader": "^3.0.1",
+    "http-server": "^0.11.1",
+    "image-webpack-loader": "^4.6.0",
+    "mini-css-extract-plugin": "^0.6.0",
+    "postcss": "^7.0.16",
+    "postcss-at-rules-variables": "^0.1.7",
+    "postcss-color-function": "^4.1.0",
+    "postcss-css-variables": "^0.12.0",
+    "postcss-custom-media": "^7.0.8",
+    "postcss-each": "^0.10.0",
+    "postcss-easy-import": "^3.0.0",
+    "postcss-hexrgba": "^1.0.1",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-mixins": "^6.2.1",
+    "postcss-nested": "^4.1.2",
+    "prettier": "^1.17.0",
+    "raw-loader": "^2.0.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.31.0",
+    "webpack-bundle-tracker": "^0.4.2-beta",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.3.1"
+  }
+}

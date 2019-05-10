@@ -30,7 +30,11 @@ webpack-stats.json
 .DS_Store
 
 # Build files
-.dist/
+!bundles/.gitkeep
+bundles/*
+
+# Collected static files
+staticfiles/
 
 # Local uploads
 .media/
