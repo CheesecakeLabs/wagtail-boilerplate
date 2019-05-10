@@ -15,7 +15,7 @@ services:
       DJANGO_ALLOWED_HOSTS: localhost,127.0.0.1
 
   db:
-    image: postgres
+    image: postgres:11
     ports:
       - 5432:5432
     volumes:
