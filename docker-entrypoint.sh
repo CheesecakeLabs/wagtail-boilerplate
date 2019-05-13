@@ -13,6 +13,7 @@ else
     python src/manage.py collectstatic --noinput  # Collect static files
 
     # Prepare log files and start outputting logs to stdout
+    rm -rf /src/logs
     mkdir /srv/logs/
     touch /srv/logs/gunicorn.log
     touch /srv/logs/access.log
