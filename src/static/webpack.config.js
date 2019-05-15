@@ -10,7 +10,7 @@ module.exports = {
   entry: path.resolve(__dirname, './javascript/app.js'),
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new BundleTracker({ filename: '../../bundles/webpack-stats.json' }),
+    new BundleTracker({path: path.resolve(__dirname, '../../bundles/'), filename: 'webpack-stats.json' }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
