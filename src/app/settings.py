@@ -56,8 +56,6 @@ THIRD_PARTY_APPS = ["storages", "webpack_loader"]
 
 PROJECT_APPS = []
 
-INSTALLED_APPS = WAGTAIL_APPS + DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
-
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
@@ -75,6 +73,8 @@ if ENVIRONMENT == "development":
     THIRD_PARTY_APPS += ["debug_toolbar"]
     MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]
     INTERNAL_IPS = "127.0.0.1"
+
+INSTALLED_APPS = WAGTAIL_APPS + DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
 
 ROOT_URLCONF = "app.urls"
 
