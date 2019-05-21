@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/static/javascript/app.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode development --port 3000 --hot --host 0.0.0.0 --config src/static/webpack.config.js",
+    "dev": "webpack-dev-server --mode development --config src/static/webpack.config.js",
     "build": "webpack --colors --hide-modules --mode production --config src/static/webpack.config.production.js",
     "server": "yarn build & http-server ../public/ -o"
   },

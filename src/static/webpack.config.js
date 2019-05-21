@@ -8,9 +8,19 @@ const resolve = require('./webpack/resolve')
 
 module.exports = {
   entry: path.resolve(__dirname, './javascript/app.js'),
+  devServer: {
+    host: '0.0.0.0',
+    port: 3000,
+    publicPath: 'http://localhost:3000/bundles/',
+    proxy: {
+      '/': {
+        target: 'http://localhost:8000',
+      },
+    },
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new BundleTracker({ filename: '../../bundles/webpack-stats.json' }),
+    new BundleTracker({path: path.resolve(__dirname, '../../bundles/'), filename: 'webpack-stats.json', publicPath: 'http://localhost:3000/bundles/' }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
