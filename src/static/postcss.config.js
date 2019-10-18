@@ -21,7 +21,7 @@ module.exports = {
     postCSSMixins(),
     postCSSEach(),
     postCSSCustomMedia(),
-    postCSSAutoprefixer({ browsers: ['IE 9', 'iOS 7'] }),
+    postCSSAutoprefixer(),
     postCSSHexRgba(),
     postCSSColorFunc(),
   ],
