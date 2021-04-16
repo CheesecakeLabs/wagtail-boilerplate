@@ -24,4 +24,4 @@ gunicorn==19.9.0
 watchtower==0.5.5
 
 # Debug
-django-debug-toolbar==1.11
+django-debug-toolbar==1.11.1
